@@ -1,5 +1,28 @@
+"use client";
+
+import { useCallback, useState } from "react";
+import { ColorPicker, ColorPickerVariant } from "./components";
+
 export default function Home() {
+  const [color, setColor] = useState("#ffffff");
+
+  const handleChange = useCallback((color) => {
+    setColor(color);
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <>
+      <ColorPicker
+        color={color}
+        onChange={handleChange}
+        variant={ColorPickerVariant.Predefined}
+      />
+
+      <ColorPicker
+        color={color}
+        onChange={handleChange}
+        variant={ColorPickerVariant.Free}
+      />
+    </>
   );
 }
